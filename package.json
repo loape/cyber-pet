@@ -11,6 +11,11 @@
     "vue3",
     "macos"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/loape/cyber-pet.git"
+  },
+  "homepage": "https://github.com/loape/cyber-pet#readme",
   "type": "module",
   "scripts": {
     "dev": "vite",

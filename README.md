@@ -54,7 +54,7 @@
 
 ```bash
 # 1. 克隆代码仓库
-git clone https://github.com/<your-username>/cyber-pet.git
+git clone https://github.com/loape/cyber-pet.git
 cd cyber-pet
 
 # 2. 安装项目依赖
