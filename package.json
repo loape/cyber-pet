@@ -1,0 +1,78 @@
+  "name": "cyber-pet",
+  "version": "1.0.0",
+  "description": "赛博工位桌宠（CyberPet）- 专为 macOS 开发者打造的轻量解压工位桌宠",
+  "main": "electron/main.cjs",
+  "author": "CyberPet",
+  "license": "MIT",
+  "keywords": [
+    "electron",
+    "cyberpet",
+    "desktop-pet",
+    "vue3",
+    "macos"
+  ],
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "start": "concurrently \"vite\" \"cross-env WAIT_ON_WEB=1 node electron/start.cjs\"",
+    "electron": "node electron/start.cjs",
+    "pack": "vite build && electron-builder --mac --arm64 --dir",
+    "dist": "vite build && electron-builder --mac --arm64",
+    "sprite": "python3 scripts/process_sprite.py"
+  },
+  "build": {
+    "appId": "com.cyberpet.desktop",
+    "productName": "CyberPet",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": ["arm64"]
+        },
+        {
+          "target": "zip",
+          "arch": ["arm64"]
+        }
+      ],
+      "category": "public.app-category.entertainment",
+      "hardenedRuntime": false,
+      "gatekeeperAssess": false
+    },
+    "dmg": {
+      "title": "${productName} ${version}",
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "canvas-confetti": "^1.9.4",
+    "vue": "^3.5.13"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.1",
+    "concurrently": "^9.1.2",
+    "cross-env": "^7.0.3",
+    "electron": "^33.2.1",
+    "electron-builder": "^26.15.3",
+    "vite": "^6.0.7"
+  }
+}
